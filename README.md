@@ -7,12 +7,26 @@ LinkLive visualizes social dynamics as stunning real-time art, converting relati
 ✨ Features
 
 🌐 Living Network Visualization - Real-time 3D social ecosystem with organic nodes
+
+
 🌤️ Social Weather Dashboard - Relationship climate monitoring with predictive insights
+
+
 💫 Communication Flow Analysis - Particle systems showing message patterns
+
+
 🎯 Relationship Health Monitor - Individual connection tracking and suggestions
+
+
 🗺️ Social Influence Mapping - Identify hidden connectors and bottlenecks
+
+
 🚨 Isolation Detection - Automated alerts for social wellness
+
+
 📊 Team Dynamics Analytics - Collaboration and productivity insights
+
+
 📅 Interactive Timeline - Historical relationship evolution playback
 
 
@@ -23,34 +37,52 @@ LinkLive visualizes social dynamics as stunning real-time art, converting relati
 
 Transform your social connections into living, breathing art
 
+
 LinkLive visualizes social dynamics as stunning real-time art, converting relationship patterns into interactive experiences that provide genuine insights.
 ✨ Features
 
 🌐 Living Network Visualization - Real-time 3D social ecosystem with organic nodes
+
 🌤️ Social Weather Dashboard - Relationship climate monitoring with predictive insights
+
 💫 Communication Flow Analysis - Particle systems showing message patterns
+
 🎯 Relationship Health Monitor - Individual connection tracking and suggestions
+
 🗺️ Social Influence Mapping - Identify hidden connectors and bottlenecks
+
 🚨 Isolation Detection - Automated alerts for social wellness
+
 📊 Team Dynamics Analytics - Collaboration and productivity insights
+
 📅 Interactive Timeline - Historical relationship evolution playback
+
+
 
 🚀 Live Demo
 Experience LinkLive: [link] (https://linklive.netlify.app/)
+
+
 🛠️ Tech Stack
 React.js • WebGL • Tailwind CSS • Real-time Data Processing • Netlify
+
+
 🏃‍♂️ Quick Start
 bashgit clone https://github.com/Taneesha000/LinkLive.git
 cd LinkLive
 npm install
 npm start
-Open http://localhost:3000
+
+
+
 🤝 Contributing
 
 Fork the repository
 Create feature branch (git checkout -b feature/NewFeature)
 Commit changes (git commit -m 'Add NewFeature')
 Push and open Pull Request
+
+
 
 👤 Author
 Taneesha Gupta - @Taneesha000
