@@ -69,8 +69,13 @@ React.js • WebGL • Tailwind CSS • Real-time Data Processing • Netlify
 
 🏃‍♂️ Quick Start
 bashgit clone https://github.com/Taneesha000/LinkLive.git
+
 cd LinkLive
+
+
 npm install
+
+
 npm start
 
 
