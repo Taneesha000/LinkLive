@@ -1,10 +1,12 @@
-import { Menu, Settings, User, Bell, Search } from 'lucide-react';
+import { Menu, Settings, User, Bell, Search, LogOut } from 'lucide-react';
+import { useUser } from '../contexts/UserContext';
 
 interface HeaderProps {
   onToggleSidebar: () => void;
 }
 
 export default function Header({ onToggleSidebar }: HeaderProps) {
+  const { user, logout } = useUser();
   return (
     <header className="bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
       <div className="flex items-center space-x-4">
@@ -45,7 +47,16 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full flex items-center justify-center">
             <User size={16} className="text-white" />
           </div>
-          <span className="text-white font-medium">Alex Chen</span>
+          <span className="text-white font-medium">{user?.name || 'Guest User'}</span>
+          {user && (
+            <button
+              onClick={logout}
+              className="text-gray-400 hover:text-red-400 transition-colors duration-200"
+              title="Logout"
+            >
+              <LogOut size={16} />
+            </button>
+          )}
         </div>
       </div>
     </header>

@@ -14,9 +14,11 @@ import { useState } from 'react';
 
 interface SidebarProps {
   isOpen: boolean;
+  activeView?: string;
+  onViewChange?: (view: string) => void;
 }
 
-export default function Sidebar({ isOpen }: SidebarProps) {
+export default function Sidebar({ isOpen, activeView, onViewChange }: SidebarProps) {
   const [expandedSections, setExpandedSections] = useState<string[]>(['visualizations']);
 
   const toggleSection = (section: string) => {
@@ -33,10 +35,10 @@ export default function Sidebar({ isOpen }: SidebarProps) {
       title: 'Visualizations',
       icon: Waves,
       items: [
-        { name: 'Network Graph', icon: Network, active: true },
-        { name: 'Communication Flow', icon: MessageCircle },
-        { name: 'Interaction Patterns', icon: BarChart3 },
-        { name: 'Real-time Feed', icon: Zap }
+        { name: 'Network Graph', icon: Network, key: 'network' },
+        { name: 'Communication Flow', icon: MessageCircle, key: 'flow' },
+        { name: 'Interaction Patterns', icon: BarChart3, key: 'patterns' },
+        { name: 'Real-time Feed', icon: Zap, key: 'feed' }
       ]
     },
     {
@@ -44,9 +46,21 @@ export default function Sidebar({ isOpen }: SidebarProps) {
       title: 'Analytics',
       icon: TrendingUp,
       items: [
-        { name: 'Social Metrics', icon: Users },
-        { name: 'Engagement Trends', icon: TrendingUp },
-        { name: 'Sentiment Analysis', icon: MessageCircle }
+        { name: 'Social Metrics', icon: Users, key: 'socialMetrics' },
+        { name: 'Engagement Trends', icon: TrendingUp, key: 'engagement' },
+        { name: 'Sentiment Analysis', icon: MessageCircle, key: 'sentiment' }
+      ]
+    },
+    {
+      id: 'account',
+      title: 'Account',
+      icon: Settings,
+      items: [
+        { name: 'Login', icon: MessageCircle, key: 'login' },
+        { name: 'Sign up', icon: Users, key: 'signup' },
+        { name: 'Forgot Password', icon: HelpCircle, key: 'forgot' },
+        { name: 'Contact Support', icon: HelpCircle, key: 'contact' },
+        { name: 'Team Builder', icon: Users, key: 'teamBuilder' }
       ]
     }
   ];
@@ -86,9 +100,10 @@ export default function Sidebar({ isOpen }: SidebarProps) {
                   {section.items.map((item) => (
                     <button
                       key={item.name}
+                      onClick={() => onViewChange && item.key && onViewChange(item.key)}
                       className={`
                         w-full flex items-center space-x-3 p-2 rounded-lg text-sm transition-all duration-200
-                        ${item.active 
+                        ${activeView === item.key 
                           ? 'text-cyan-400 bg-cyan-400/10 border-l-2 border-cyan-400' 
                           : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
                         }

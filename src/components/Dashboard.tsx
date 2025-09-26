@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NetworkVisualization from './NetworkVisualization';
 import SocialWeather from './SocialWeather';
 import CommunicationFlow from './CommunicationFlow';
@@ -7,11 +7,28 @@ import SocialInfluence from './SocialInfluence';
 import IsolationDetection from './IsolationDetection';
 import TeamDynamics from './TeamDynamics';
 import InteractiveTimeline from './InteractiveTimeline';
+import InteractionPatterns from './InteractionPatterns';
+import RealTimeFeed from './RealTimeFeed';
+import SocialMetrics from './SocialMetrics';
+import EngagementTrends from './EngagementTrends';
+import SentimentAnalysis from './SentimentAnalysis';
+import Login from './Login';
+import Signup from './Signup';
+import ForgotPassword from './ForgotPassword';
+import ContactSupport from './ContactSupport';
+import TeamBuilder from './TeamBuilder';
 
-type DashboardView = 'network' | 'weather' | 'flow' | 'health' | 'influence' | 'isolation' | 'team' | 'timeline';
+export type DashboardView =
+  | 'network' | 'weather' | 'flow' | 'health' | 'influence' | 'isolation' | 'team' | 'timeline' | 'patterns' | 'feed'
+  | 'socialMetrics' | 'engagement' | 'sentiment'
+  | 'login' | 'signup' | 'forgot' | 'contact' | 'teamBuilder';
 
-export default function Dashboard() {
-  const [activeView, setActiveView] = useState<DashboardView>('network');
+interface DashboardProps {
+  activeView: DashboardView;
+  onViewChange: (view: DashboardView) => void;
+}
+
+export default function Dashboard({ activeView, onViewChange }: DashboardProps) {
 
   const renderActiveView = () => {
     switch (activeView) {
@@ -31,6 +48,26 @@ export default function Dashboard() {
         return <TeamDynamics />;
       case 'timeline':
         return <InteractiveTimeline />;
+      case 'patterns':
+        return <InteractionPatterns />;
+      case 'feed':
+        return <RealTimeFeed />;
+      case 'socialMetrics':
+        return <SocialMetrics />;
+      case 'engagement':
+        return <EngagementTrends />;
+      case 'sentiment':
+        return <SentimentAnalysis />;
+      case 'login':
+        return <Login onSuccess={() => onViewChange('network')} />;
+      case 'signup':
+        return <Signup onSuccess={() => onViewChange('login')} />;
+      case 'forgot':
+        return <ForgotPassword />;
+      case 'contact':
+        return <ContactSupport />;
+      case 'teamBuilder':
+        return <TeamBuilder />;
       default:
         return <NetworkVisualization />;
     }
@@ -44,6 +81,8 @@ export default function Dashboard() {
           { key: 'network', label: 'Network', icon: '🌐' },
           { key: 'weather', label: 'Weather', icon: '🌤️' },
           { key: 'flow', label: 'Flow', icon: '💬' },
+          { key: 'patterns', label: 'Patterns', icon: '📊' },
+          { key: 'feed', label: 'Real-time', icon: '⚡' },
           { key: 'health', label: 'Health', icon: '❤️' },
           { key: 'influence', label: 'Influence', icon: '⭐' },
           { key: 'isolation', label: 'Isolation', icon: '🔍' },
@@ -52,7 +91,7 @@ export default function Dashboard() {
         ].map(({ key, label, icon }) => (
           <button
             key={key}
-            onClick={() => setActiveView(key as DashboardView)}
+            onClick={() => onViewChange(key as DashboardView)}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
               activeView === key
                 ? 'bg-cyan-600 text-white shadow-lg'
